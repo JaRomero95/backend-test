@@ -1,6 +1,13 @@
 require:
   - rubocop-rails
 
+AllCops:
+  NewCops: enable
+
 Style/Documentation:
   Exclude:
     - db/migrate/**
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
