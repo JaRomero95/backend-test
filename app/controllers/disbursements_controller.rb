@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DisbursementsController < ApplicationController
   def index
     disbursements = Disbursement.filter(filter_params)

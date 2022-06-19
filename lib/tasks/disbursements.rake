@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :disbursements do
   desc 'Allows to run DisbursementsGenerator from CLI'
 

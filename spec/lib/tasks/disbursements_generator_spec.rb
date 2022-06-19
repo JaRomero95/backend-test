@@ -13,7 +13,7 @@ RSpec.describe 'disbursements:generator', type: :task do
     it 'calls generator for the past week' do
       task.execute
 
-      expected_date = (Date.today - 1.week).strftime('%d/%m/%Y')
+      expected_date = (Time.zone.today - 1.week).strftime('%d/%m/%Y')
 
       expect(DisbursementsGeneratorJob).to have_received(:perform_now).with(expected_date)
     end

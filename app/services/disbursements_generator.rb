@@ -9,7 +9,9 @@ class DisbursementsGenerator
   def run
     disbursements = orders.map { |order| disbursement_from_order(order) }
 
+    # rubocop:disable Rails/SkipsModelValidations
     Disbursement.insert_all! disbursements if disbursements.any?
+    # rubocop:enable Rails/SkipsModelValidations
   end
 
   private
@@ -30,6 +32,6 @@ class DisbursementsGenerator
 
     disbursed_amount = order.amount - fee
 
-    {order_id: order.id, amount: disbursed_amount}
+    { order_id: order.id, amount: disbursed_amount }
   end
 end
