@@ -22,3 +22,12 @@ ModelImporter::Importer.new(
     amount: ->(value) { value.to_f * 100 }
   }
 ).run
+
+next_date = Date.new
+while next_date.present?
+  next_date = Order.where.not(completed_at: nil)
+                   .where.not(id: Disbursement.pluck(:order_id))
+                   .first&.completed_at
+
+  DisbursementsGenerator.new(date: next_date).run if next_date
+end
